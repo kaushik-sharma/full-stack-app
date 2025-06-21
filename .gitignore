@@ -1,0 +1,5 @@
+.DS_Store
+node_modules
+dist
+.env.migration.development
+.env.migration.production

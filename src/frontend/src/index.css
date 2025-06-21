@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+
+/* browser default, 16px */
+html {
+  font-size: 100%;
+  background-color: #121212;
+}
+
+@media (min-width: 1024px) {
+  /* 18px for larger screens */
+  html {
+    font-size: 112.5%;
+  }
+}
