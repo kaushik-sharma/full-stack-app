@@ -9,6 +9,7 @@ import { UserController } from "./user_controller.js";
 import { asyncHandler } from "../helpers/async_handler.js";
 import { ReportTargetType } from "@prisma/client";
 import { PrismaService } from "../services/prisma_service.js";
+import { successResponseHandler } from "../helpers/success_handler.js";
 
 export class CronController {
   static readonly deleteScheduledUsers: RequestHandler = asyncHandler(
@@ -27,6 +28,14 @@ export class CronController {
 
       logger.info(`Deleted ${userIds.length} scheduled user deletions.`);
       logger.info("Completed scheduled user account deletion task.");
+
+      successResponseHandler({
+        res: res,
+        status: 200,
+        metadata: {
+          message: "Successfully completed scheduled user account deletion task.",
+        },
+      });
     }
   );
 
@@ -76,6 +85,14 @@ export class CronController {
       }
 
       logger.info("Completed moderation checkup.");
+
+      successResponseHandler({
+        res: res,
+        status: 200,
+        metadata: {
+          message: "Successfully completed moderation checkup.",
+        },
+      });
     }
   );
 }

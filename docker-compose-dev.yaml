@@ -1,0 +1,30 @@
+services:
+  backend:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: backend-dev:latest
+    container_name: backend
+    volumes:
+      - .:/app
+      - /app/node_modules
+    expose:
+      - '3000'
+    ports:
+      - '3000:3000'
+    command: npm run debug:server:dev
+
+  frontend:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: frontend-dev:latest
+    container_name: frontend
+    volumes:
+      - .:/app
+      - /app/node_modules
+    expose:
+      - '5173'
+    ports:
+      - '5173:5173'
+    command: npm run debug:client

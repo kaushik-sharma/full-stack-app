@@ -5,12 +5,14 @@
   "type": "module",
   "scripts": {
     "debug:client": "vite",
-    "debug:server:dev": "cd src/backend && ENV=DEVELOPMENT tsx watch --inspect=0.0.0.0:9229 src/app.ts",
-    "debug:server:prod": "cd src/backend && ENV=PRODUCTION tsx watch --inspect=0.0.0.0:9229 src/app.ts",
+    "debug:server:dev": "ENV=DEVELOPMENT tsx watch --inspect=0.0.0.0:9229 src/backend/src/app.ts",
+    "debug:server:prod": "ENV=PRODUCTION tsx watch --inspect=0.0.0.0:9229 src/backend/src/app.ts",
     "debug:all:dev": "npm-run-all --parallel debug:server:dev debug:client",
     "debug:all:prod": "npm-run-all --parallel debug:server:prod debug:client",
-    "build:client": "tsc -b tsconfig.app.json && vite build",
-    "build:server:dev": "tsc -b tsconfig.node.json && ENV=DEVELOPMENT node dist/server/app.js",
+
+    "build": "rm -rf dist && tsc -b tsconfig.app.json && vite build && tsc -b tsconfig.node.json",
+    "start:dev": "ENV=DEVELOPMENT node dist/server/src/app.js",
+
     "prisma:generate": "npx prisma generate",
     "prisma:deploy:dev": "npx dotenv -e .env.migration.development -- prisma migrate dev",
     "prisma:deploy:prod": "npx dotenv -e .env.migration.production -- prisma migrate deploy"

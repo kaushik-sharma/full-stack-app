@@ -4,6 +4,7 @@ import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import { $enum } from "ts-enum-util";
+import path from "path";
 
 import { PrismaService } from "./services/prisma_service.js";
 import { getAuthRouter } from "./routes/auth_routes.js";
@@ -35,7 +36,19 @@ await RedisService.initClient();
 
 const app = express();
 
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        imgSrc: ["*"],
+        scriptSrc: ["'self'"],
+        styleSrc: ["'self'"],
+        connectSrc: ["'self'"],
+      },
+    },
+  })
+);
 
 app.use(
   morgan("combined", {
@@ -71,6 +84,18 @@ app.use("/api/v1/connections", getConnectionRouter());
 app.use("/api/v1/cron", getCronRouter());
 
 app.use(errorHandler);
+
+const clientDist = path.join(process.cwd(), 'dist', 'client');
+app.use(express.static(clientDist));
+
+app.get('/*splat', (req, res) =>
+  res.sendFile(path.join(clientDist, 'index.html'), (err) => {
+    if (err) {
+      console.error('Error sending index.html:', err);
+      res.status(500).send('Server error!');
+    }
+  })
+);
 
 process.on("unhandledRejection", (reason, promise) => {
   console.error(reason);
