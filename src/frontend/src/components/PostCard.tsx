@@ -69,7 +69,7 @@ export const PostCard: React.FC<{ depth: number }> = ({ depth }) => {
   return (
     <div className="w-[35rem] bg-[#303030] border-none rounded-[1rem] overflow-hidden">
       <img
-        src="https://image-processor-storage.s3.us-west-2.amazonaws.com/images/3cf61c1011912a2173ea4dfa260f1108/halo-of-neon-ring-illuminated-in-the-stunning-landscape-of-yosemite.jpg"
+        src="https://media.istockphoto.com/id/1419410282/photo/silent-forest-in-spring-with-beautiful-bright-sun-rays.jpg?s=612x612&w=0&k=20&c=UHeb1pGOw6ozr6utsenXHhV19vW6oiPIxDqhKCS2Llk="
         className="w-full aspect-[16/9] object-cover"
       />
       <div>
