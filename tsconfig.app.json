@@ -16,7 +16,7 @@
     "jsx": "react-jsx",
 
     /* Linting */
-    "strict": true,
+    "strict": true
   },
-  "include": ["src/frontend", "src/frontend/.eslintrc.js"]
+  "include": ["src/client"]
 }
