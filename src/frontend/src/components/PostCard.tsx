@@ -65,12 +65,12 @@ const InteractionEl: React.FC<{
   </div>
 );
 
-export const PostCard: React.FC<{ depth: number }> = ({ depth }) => {
+export const PostCard: React.FC = () => {
   return (
     <div className="w-[35rem] bg-[#303030] border-none rounded-[1rem] overflow-hidden">
       <img
         src="https://media.istockphoto.com/id/1419410282/photo/silent-forest-in-spring-with-beautiful-bright-sun-rays.jpg?s=612x612&w=0&k=20&c=UHeb1pGOw6ozr6utsenXHhV19vW6oiPIxDqhKCS2Llk="
-        className="w-full aspect-[16/9] object-cover"
+        className="w-full aspect-[16/8] object-cover"
       />
       <div>
         <div className="flex flex-row px-[1rem] pt-[1rem] items-center">
@@ -99,14 +99,15 @@ export const PostCard: React.FC<{ depth: number }> = ({ depth }) => {
           venenatis blandit. Proin malesuada porta elementum. Integer luctus sagittis tempus.
           Vivamus tempor urna vulputate justo tristique imperdiet.
         </p>
-        {depth > 0 ? <div /> : <div className="h-[1rem]" />}
+        <div className="h-[1rem]" />
+        {/* {depth > 0 ? <div /> : <div className="h-[1rem]" />}
         {depth > 0 && (
           <div className="transform scale-90">
             <div className="border border-[#ffffff] rounded-[1rem] overflow-hidden">
               <PostCard depth={depth - 1} />
             </div>
           </div>
-        )}
+        )} */}
         <div className="w-full h-[1.5px] bg-[#888888]" />
         <div className="flex flex-row h-[3.2rem] items-center justify-center">
           <InteractionEl icon={HandThumbUpIcon} text="200" onClick={() => {}} />

@@ -9,10 +9,8 @@
     "debug:server:prod": "ENV=PRODUCTION tsx watch --inspect=0.0.0.0:9229 src/backend/app.ts",
     "debug:all:dev": "npm-run-all --parallel debug:server:dev debug:client",
     "debug:all:prod": "npm-run-all --parallel debug:server:prod debug:client",
-
     "build": "rm -rf dist && tsc -b tsconfig.app.json && vite build && tsc -b tsconfig.node.json",
     "start:dev": "ENV=DEVELOPMENT node dist/server/app.js",
-
     "prisma:generate": "npx prisma generate",
     "prisma:deploy:dev": "npx dotenv -e .env.migration.development -- prisma migrate dev",
     "prisma:deploy:prod": "npx dotenv -e .env.migration.production -- prisma migrate deploy"
@@ -26,6 +24,7 @@
     "@aws-sdk/cloudfront-signer": "^3.734.0",
     "@heroicons/react": "^2.2.0",
     "@prisma/client": "^6.10.1",
+    "@reduxjs/toolkit": "^2.8.2",
     "@tailwindcss/vite": "^4.1.10",
     "axios": "^1.10.0",
     "bcrypt": "^5.1.1",
@@ -48,8 +47,10 @@
     "rate-limit-redis": "^4.2.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^7.6.2",
     "react-virtuoso": "^4.13.0",
+    "redux": "^5.0.1",
     "socket.io": "^4.8.1",
     "tailwindcss": "^4.1.10",
     "ts-enum-util": "^4.1.0",
